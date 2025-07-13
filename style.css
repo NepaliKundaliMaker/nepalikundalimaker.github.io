@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+  background: linear-gradient(to top right, #1c1c3c, #2c2c6c);
+  color: #f0f0f0;
+  padding: 20px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+input, button {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
+
+button {
+  background: #e0aaff;
+  color: #1c0033;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #d58bff;
+}
+
+.hidden {
+  display: none;
+}
+
+#grahaList {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.toggle-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.toggle-container button {
+  background: #ffffff20;
+  border: none;
+  padding: 6px 12px;
+  margin: 0 5px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.toggle-container button.active {
+  background: #fff;
+  color: #000;
+}
