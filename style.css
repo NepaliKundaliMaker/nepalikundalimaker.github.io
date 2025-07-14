@@ -101,9 +101,47 @@ ul#grahaList {
 
 ul#grahaList li {
   margin: 0.5rem 0;
-  padding: 0.6rem;
-  background: #f5f5fb;
-  border-left: 5px solid #673ab7;
-  border-radius: 6px;
+  padding: 0.8rem;
+  background: #f3f0fd;
+  border-left: 6px solid #673ab7;
+  border-radius: 8px;
   font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+ul#grahaList li:hover {
+  transform: scale(1.02);
+  background: #e9e3fb;
+}
+
+/* Graha Icons */
+ul#grahaList li::before {
+  content: "🔯";
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+  color: #673ab7;
+}
+
+ul#grahaList li[data-graha="Sun"]::before { content: "☀️"; }
+ul#grahaList li[data-graha="Moon"]::before { content: "🌙"; }
+ul#grahaList li[data-graha="Mars"]::before { content: "🔥"; }
+ul#grahaList li[data-graha="Mercury"]::before { content: "🧠"; }
+ul#grahaList li[data-graha="Jupiter"]::before { content: "📚"; }
+ul#grahaList li[data-graha="Venus"]::before { content: "💖"; }
+ul#grahaList li[data-graha="Saturn"]::before { content: "🪐"; }
+ul#grahaList li[data-graha="Rahu"]::before { content: "🌫️"; }
+ul#grahaList li[data-graha="Ketu"]::before { content: "🎯"; }
+ul#grahaList li[data-graha="Lagna"]::before { content: "🔘"; }
+
+#nakshatraDisplay {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+  border: 2px dashed #673ab7;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fafafa 40%, #e7defb 100%);
+  max-width: 300px;
+  margin: 1rem auto;
+  box-shadow: 0 0 10px rgba(103, 58, 183, 0.2);
 }
