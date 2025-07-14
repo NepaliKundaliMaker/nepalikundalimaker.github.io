@@ -20,14 +20,14 @@
 
   <div class="card">
     <form id="kundaliForm">
-      <label id="labelDate">🗓 जन्म मिति</label>
-      <input type="date" name="birth_date" required />
+      <label id="labelDate" for="birth_date">🗓 जन्म मिति</label>
+      <input type="date" id="birth_date" name="birth_date" required />
 
-      <label id="labelTime">⏰ जन्म समय</label>
-      <input type="time" name="birth_time" required />
+      <label id="labelTime" for="birth_time">⏰ जन्म समय</label>
+      <input type="time" id="birth_time" name="birth_time" required />
 
-      <label id="labelLocation">📍 जन्म स्थान</label>
-      <input type="text" name="birth_location" placeholder="जस्तै: काठमाडौं" required />
+      <label id="labelLocation" for="birth_location">📍 जन्म स्थान</label>
+      <input type="text" id="birth_location" name="birth_location" placeholder="जस्तै: काठमाडौं" required />
 
       <button type="submit" id="submitBtn">🌠 कुंडली बनाउनुहोस्</button>
     </form>
