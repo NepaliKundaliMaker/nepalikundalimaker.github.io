@@ -4,7 +4,6 @@ const results = document.getElementById("results");
 const nakshatraDisplay = document.getElementById("nakshatraDisplay");
 const submitBtn = document.getElementById("submitBtn");
 
-// Language toggle
 const titles = {
   np: {
     title: "🔮 नेपाली कुंडली निर्माता",
@@ -53,19 +52,19 @@ function switchLanguage(lang) {
 
 switchLanguage("np");
 
-// Form Submit
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   submitBtn.innerText = "🧘 कृपया पर्खनुहोस्...";
   grahaList.innerHTML = "";
   nakshatraDisplay.innerText = "";
+  results.classList.add("hidden");
 
   const birth_date = form.birth_date.value;
   const birth_time = form.birth_time.value;
   const birth_location = form.birth_location.value;
 
   try {
-    const response = await fetch("http://localhost:5000/kundali", {
+    const response = await fetch("https://kundali-backend.onrender.com/kundali", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -73,19 +72,22 @@ form.addEventListener("submit", async (e) => {
       body: JSON.stringify({ birth_date, birth_time, birth_location })
     });
 
+    if (!response.ok) throw new Error("Server Error");
+
     const data = await response.json();
     const positions = data.grahas;
     const moonNak = data.moon_nakshatra;
     const lagna = data.lagna;
 
     results.classList.remove("hidden");
-
     nakshatraDisplay.innerText = `${titles[currentLang].nak}${moonNak}`;
 
     Object.entries(positions).forEach(([graha, info]) => {
-      const li = document.createElement("li");
-      li.innerText = `${graha}: ${info.degree}° (${titles[currentLang].rashi}: ${info.rashi})`;
-      grahaList.appendChild(li);
+      if (graha !== "Lagna") {
+        const li = document.createElement("li");
+        li.innerText = `${graha}: ${info.degree}° (${titles[currentLang].rashi}: ${info.rashi})`;
+        grahaList.appendChild(li);
+      }
     });
 
     const lagnaLi = document.createElement("li");
@@ -94,7 +96,7 @@ form.addEventListener("submit", async (e) => {
 
     submitBtn.innerText = titles[currentLang].submit;
   } catch (err) {
-    grahaList.innerHTML = "<li>⚠️ सर्भरसँग जडान गर्न सकिएन।</li>";
+    grahaList.innerHTML = `<li>⚠️ ${currentLang === "np" ? "सर्भरसँग जडान गर्न सकिएन।" : "Unable to connect to server."}</li>`;
     submitBtn.innerText = titles[currentLang].submit;
   }
 });
